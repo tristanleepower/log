@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html><head>
+
+<title>Battery Historian analysis for bs.txt</title>
+<p>Battery Historian analysis for bs.txt</p>
+
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization',
+       'version':'1','packages':['timeline']}]}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+google.setOnLoadCallback(drawChart);
+
+    var dataTable;
+    var chart;
+    var options;
+    var default_width = 3000
+function drawChart() {
+
+    container = document.getElementById('chart');
+    chart = new google.visualization.Timeline(container);
+
+    dataTable = new google.visualization.DataTable();
+    dataTable.addColumn({ type: 'string', id: 'Position' });
+    dataTable.addColumn({ type: 'string', id: 'Name' });
+    dataTable.addColumn({ type: 'date', id: 'Start' });
+    dataTable.addColumn({ type: 'date', id: 'End' });
+    dataTable.addRows([
+
+['battery_level', 'battery_level=082(0s-0s)', new Date(1423725997 * 1000), new Date(1423725998 * 1000)],
+['plugged', '+plugged(+27m58s-+28m17s)', new Date(1423727675 * 1000), new Date(1423727694 * 1000)],
+['plugged', '+plugged(0s-+2s)', new Date(1423725997 * 1000), new Date(1423725999 * 1000)],
+['screen', '+screen(+27m50s-+28m17s)', new Date(1423727667 * 1000), new Date(1423727694 * 1000)],
+['screen', '+screen(0s-+4s)', new Date(1423725997 * 1000), new Date(1423726001 * 1000)],
+['top', '+top=u0a10:"com.asus.launcher"(0s-+28m17s)', new Date(1423725997 * 1000), new Date(1423727694 * 1000)],
+['sync', '+sync=u0a98:"com.google.android.apps.plus.content.EsProvider/com.google/tristan.lee.asus@gmail.com"(+5s-+14s)', new Date(1423726002 * 1000), new Date(1423726011 * 1000)],
+['wake_lock *', '+wake_lock=1001:"*walarm*:com.android.internal.telephony.data-stall"(+12m07s-+12m07s)', new Date(1423726724 * 1000), new Date(1423726725 * 1000)],
+['wake_lock *', '+wake_lock=u0a8:"*walarm*:com.asus.email/com.android.exchange.MailboxAlarmReceiver"(+20m41s-+20m41s)', new Date(1423727238 * 1000), new Date(1423727239 * 1000)],
+['wake_lock *', '+wake_lock=1001:"*walarm*:com.android.internal.telephony.data-stall"(+6m06s-+6m06s)', new Date(1423726363 * 1000), new Date(1423726364 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+16m47s-+16m57s)', new Date(1423727004 * 1000), new Date(1423727014 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+11m47s-+11m57s)', new Date(1423726704 * 1000), new Date(1423726714 * 1000)],
+['wake_lock *', '+wake_lock=1002:"*walarm*:com.android.bluetooth.btservice.action.ALARM_WAKEUP"(+4m11s-+4m21s)', new Date(1423726248 * 1000), new Date(1423726258 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+19m11s-+19m22s)', new Date(1423727148 * 1000), new Date(1423727159 * 1000)],
+['wake_lock *', '+wake_lock(0s-+4s)', new Date(1423725997 * 1000), new Date(1423726001 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+21m24s-+21m39s)', new Date(1423727281 * 1000), new Date(1423727296 * 1000)],
+['wake_lock *', '+wake_lock=1000:"SyncLoopWakeLock"(+5s-+16s)', new Date(1423726002 * 1000), new Date(1423726013 * 1000)],
+['wake_lock *', '+wake_lock=-1:"screen"(+27m50s-+28m17s)', new Date(1423727667 * 1000), new Date(1423727694 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+15m17s-+15m28s)', new Date(1423726914 * 1000), new Date(1423726925 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+6m46s-+6m56s)', new Date(1423726403 * 1000), new Date(1423726413 * 1000)],
+['wake_lock *', '+wake_lock=u0a120:"*walarm*:com.xiaomi.push.PING_TIMER"(+21m47s-+21m47s)', new Date(1423727304 * 1000), new Date(1423727305 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+32s-+35s)', new Date(1423726029 * 1000), new Date(1423726032 * 1000)],
+['wake_lock *', '+wake_lock=1000:"SyncManagerHandleSyncAlarm"(+2m44s-+2m57s)', new Date(1423726161 * 1000), new Date(1423726174 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+24m08s-+24m19s)', new Date(1423727445 * 1000), new Date(1423727456 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*walarm*:android.net.ConnectivityService.action.PKT_CNT_SAMPLE_INTERVAL_ELAPSED"(+7m11s-+7m11s)', new Date(1423726428 * 1000), new Date(1423726429 * 1000)],
+['wake_lock *', 'LOCATION(+11m57s-+12m00s)', new Date(1423726714 * 1000), new Date(1423726717 * 1000)],
+['wake_lock *', 'LOCATION(+24m19s-+24m22s)', new Date(1423727456 * 1000), new Date(1423727459 * 1000)],
+['wake_lock *', 'LOCATION(+24m22s-+24m22s)', new Date(1423727459 * 1000), new Date(1423727460 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+5m14s-+5m26s)', new Date(1423726311 * 1000), new Date(1423726323 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+18m08s-+18m18s)', new Date(1423727085 * 1000), new Date(1423727095 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+16m03s-+16m03s)', new Date(1423726960 * 1000), new Date(1423726961 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+26m46s-+26m57s)', new Date(1423727603 * 1000), new Date(1423727614 * 1000)],
+['wake_lock *', '+wake_lock=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+3m23s-+3m23s)', new Date(1423726200 * 1000), new Date(1423726201 * 1000)],
+['wake_lock *', '+wake_lock=1002:"*walarm*:com.android.bluetooth.btservice.action.ALARM_WAKEUP"(+20m19s-+20m29s)', new Date(1423727216 * 1000), new Date(1423727226 * 1000)],
+['wake_lock *', 'LOCATION(+20m29s-+20m29s)', new Date(1423727226 * 1000), new Date(1423727227 * 1000)],
+['wake_lock *', 'LOCATION(+12m00s-+12m01s)', new Date(1423726717 * 1000), new Date(1423726719 * 1000)],
+['running', '+running(+12m07s-+12m08s)', new Date(1423726724 * 1000), new Date(1423726725 * 1000)],
+['running', '+running(+20m41s-+20m43s)', new Date(1423727238 * 1000), new Date(1423727240 * 1000)],
+['running', '+running(+10m03s-+10m04s)', new Date(1423726600 * 1000), new Date(1423726601 * 1000)],
+['running', '+running(+6m06s-+6m12s)', new Date(1423726363 * 1000), new Date(1423726369 * 1000)],
+['running', '+running(+16m47s-+16m59s)', new Date(1423727004 * 1000), new Date(1423727016 * 1000)],
+['running', '+running(+11m47s-+12m01s)', new Date(1423726704 * 1000), new Date(1423726718 * 1000)],
+['running', '+running(+4m11s-+4m24s)', new Date(1423726248 * 1000), new Date(1423726261 * 1000)],
+['running', '+running(+19m11s-+19m22s)', new Date(1423727148 * 1000), new Date(1423727159 * 1000)],
+['running', '+running(0s-+18s)', new Date(1423725997 * 1000), new Date(1423726015 * 1000)],
+['running', '+running(+21m24s-+21m39s)', new Date(1423727281 * 1000), new Date(1423727296 * 1000)],
+['running', '+running(+27m50s-+28m17s)', new Date(1423727667 * 1000), new Date(1423727694 * 1000)],
+['running', '+running(+15m17s-+15m36s)', new Date(1423726914 * 1000), new Date(1423726933 * 1000)],
+['running', '+running(+6m46s-+6m56s)', new Date(1423726403 * 1000), new Date(1423726413 * 1000)],
+['running', '+running(+21m47s-+21m49s)', new Date(1423727304 * 1000), new Date(1423727306 * 1000)],
+['running', '+running(+32s-+40s)', new Date(1423726029 * 1000), new Date(1423726037 * 1000)],
+['running', '+running(+2m44s-+2m57s)', new Date(1423726161 * 1000), new Date(1423726174 * 1000)],
+['running', '+running(+24m08s-+24m23s)', new Date(1423727445 * 1000), new Date(1423727460 * 1000)],
+['running', '+running(+7m11s-+7m14s)', new Date(1423726428 * 1000), new Date(1423726431 * 1000)],
+['running', '+running(+20m03s-+20m04s)', new Date(1423727200 * 1000), new Date(1423727201 * 1000)],
+['running', '+running(+5m14s-+5m28s)', new Date(1423726311 * 1000), new Date(1423726325 * 1000)],
+['running', '+running(+18m08s-+18m18s)', new Date(1423727085 * 1000), new Date(1423727095 * 1000)],
+['running', '+running(+16m03s-+16m09s)', new Date(1423726960 * 1000), new Date(1423726966 * 1000)],
+['running', '+running(+22m29s-+22m30s)', new Date(1423727346 * 1000), new Date(1423727347 * 1000)],
+['running', '+running(+26m46s-+26m57s)', new Date(1423727603 * 1000), new Date(1423727614 * 1000)],
+['running', '+running(+3m23s-+3m23s)', new Date(1423726200 * 1000), new Date(1423726201 * 1000)],
+['running', '+running(+20m19s-+20m29s)', new Date(1423727216 * 1000), new Date(1423727226 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+19m11s-+19m12s)', new Date(1423727148 * 1000), new Date(1423727150 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+19m12s-+19m17s)', new Date(1423727149 * 1000), new Date(1423727154 * 1000)],
+['wake_lock_in', 'LOCATION(+19m12s-+19m13s)', new Date(1423727149 * 1000), new Date(1423727150 * 1000)],
+['wake_lock_in', 'LOCATION(+19m12s-+19m12s)', new Date(1423727149 * 1000), new Date(1423727150 * 1000)],
+['wake_lock_in', 'LOCATION(+19m13s-+19m22s)', new Date(1423727150 * 1000), new Date(1423727159 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+19m17s-+19m22s)', new Date(1423727154 * 1000), new Date(1423727159 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+27m50s-+27m50s)', new Date(1423727667 * 1000), new Date(1423727668 * 1000)],
+['wake_lock_in', 'LOCATION(+27m50s-+27m54s)', new Date(1423727667 * 1000), new Date(1423727671 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+27m50s-+27m52s)', new Date(1423727667 * 1000), new Date(1423727669 * 1000)],
+['wake_lock_in', '+wake_lock_in=-1:"screen"(+27m50s-+28m17s)', new Date(1423727667 * 1000), new Date(1423727694 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a113:"*alarm*:com.asus.sitd.whatsnext/.card.CardUpdater":"com.asus.sitd.whatsnext"(+27m50s-+27m50s)', new Date(1423727667 * 1000), new Date(1423727668 * 1000)],
+['wake_lock_in', 'LOCATION(+27m50s-+27m50s)', new Date(1423727667 * 1000), new Date(1423727668 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+27m51s-+27m51s)', new Date(1423727668 * 1000), new Date(1423727669 * 1000)],
+['wake_lock_in', 'LOCATION(+27m51s-+27m51s)', new Date(1423727668 * 1000), new Date(1423727669 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a8:"AttachmentService"(+27m51s-+27m51s)', new Date(1423727668 * 1000), new Date(1423727669 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a8:"*walarm*:com.asus.email/com.android.exchange.MailboxAlarmReceiver"(+27m53s-+27m55s)', new Date(1423727670 * 1000), new Date(1423727672 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+19m22s-+19m22s)', new Date(1423727159 * 1000), new Date(1423727160 * 1000)],
+['wake_lock_in', 'LOCATION(+19m22s-+19m22s)', new Date(1423727159 * 1000), new Date(1423727160 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a8:"MAIL_SERVICE"(+27m55s-+27m57s)', new Date(1423727672 * 1000), new Date(1423727674 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+27m55s-+27m55s)', new Date(1423727672 * 1000), new Date(1423727673 * 1000)],
+['wake_lock_in', 'LOCATION(+27m55s-+27m55s)', new Date(1423727672 * 1000), new Date(1423727673 * 1000)],
+['wake_lock_in', 'LOCATION(+27m55s-+27m56s)', new Date(1423727672 * 1000), new Date(1423727674 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a119:"*walarm*:jp.naver.line.android.legy.SpdyHeartbeatChecker.sendPing"(+27m56s-+27m56s)', new Date(1423727673 * 1000), new Date(1423727674 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+27m56s-+28m05s)', new Date(1423727673 * 1000), new Date(1423727682 * 1000)],
+['wake_lock_in', 'LOCATION(+27m56s-+28m05s)', new Date(1423727673 * 1000), new Date(1423727682 * 1000)],
+['wake_lock_in', 'LOCATION(+27m56s-+27m56s)', new Date(1423727673 * 1000), new Date(1423727674 * 1000)],
+['wake_lock_in', 'LOCATION(+27m57s-+27m57s)', new Date(1423727674 * 1000), new Date(1423727675 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a26:"fingerprint_scanner_static"(+27m58s-+27m58s)', new Date(1423727675 * 1000), new Date(1423727676 * 1000)],
+['wake_lock_in', 'LOCATION(+27m58s-+27m58s)', new Date(1423727675 * 1000), new Date(1423727676 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a26:"fingerprint_scanner_local"(+27m58s-+27m59s)', new Date(1423727675 * 1000), new Date(1423727677 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"okTag"(+27m58s-+27m58s)', new Date(1423727675 * 1000), new Date(1423727676 * 1000)],
+['wake_lock_in', 'LOCATION(+27m58s-+27m59s)', new Date(1423727675 * 1000), new Date(1423727676 * 1000)],
+['wake_lock_in', 'LOCATION(+27m59s-+28m00s)', new Date(1423727676 * 1000), new Date(1423727678 * 1000)],
+['wake_lock_in', 'LOCATION(+28m01s-+28m01s)', new Date(1423727678 * 1000), new Date(1423727679 * 1000)],
+['wake_lock_in', 'LOCATION(+28m05s-+28m05s)', new Date(1423727682 * 1000), new Date(1423727683 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+28m05s-+28m05s)', new Date(1423727682 * 1000), new Date(1423727683 * 1000)],
+['wake_lock_in', 'LOCATION(+28m05s-+28m15s)', new Date(1423727682 * 1000), new Date(1423727692 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+28m05s-+28m15s)', new Date(1423727682 * 1000), new Date(1423727692 * 1000)],
+['wake_lock_in', 'LOCATION(+28m10s-+28m10s)', new Date(1423727687 * 1000), new Date(1423727688 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a41:"*alarm*:com.google.android.googlequicksearchbox/com.google.android.velvet.VelvetBackgroundTasksImpl$Service":"com.google.android.googlequicksearchbox:search"(+28m11s-+28m11s)', new Date(1423727688 * 1000), new Date(1423727689 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+28m15s-+28m17s)', new Date(1423727692 * 1000), new Date(1423727694 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+28m15s-+28m15s)', new Date(1423727692 * 1000), new Date(1423727693 * 1000)],
+['wake_lock_in', 'LOCATION(+28m15s-+28m15s)', new Date(1423727692 * 1000), new Date(1423727693 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"NetworkStats"(+2m44s-+2m44s)', new Date(1423726161 * 1000), new Date(1423726162 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.content.syncmanager.SYNC_ALARM":"com.asus.UpdateLauncher"(+2m44s-+2m44s)', new Date(1423726161 * 1000), new Date(1423726162 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"SyncManagerHandleSyncAlarm"(+2m44s-+2m44s)', new Date(1423726161 * 1000), new Date(1423726162 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a120:"*alarm*":"com.jiongji.andriod.card"(+2m44s-+2m45s)', new Date(1423726161 * 1000), new Date(1423726163 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"SyncLoopWakeLock"(+2m44s-+2m44s)', new Date(1423726161 * 1000), new Date(1423726162 * 1000)],
+['wake_lock_in', 'LOCATION(+2m45s-+2m45s)', new Date(1423726162 * 1000), new Date(1423726163 * 1000)],
+['wake_lock_in', 'LOCATION(+2m45s-+2m46s)', new Date(1423726162 * 1000), new Date(1423726163 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a26:"*alarm*":"com.google.android.gms:car"(+2m45s-+2m45s)', new Date(1423726162 * 1000), new Date(1423726163 * 1000)],
+['wake_lock_in', 'LOCATION(+2m45s-+2m55s)', new Date(1423726162 * 1000), new Date(1423726172 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*":"com.asus.UpdateLauncher"(+2m45s-+2m45s)', new Date(1423726162 * 1000), new Date(1423726163 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a129:"*alarm*":"com.facebook.katana"(+2m45s-+2m45s)', new Date(1423726162 * 1000), new Date(1423726163 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+2m45s-+2m50s)', new Date(1423726162 * 1000), new Date(1423726167 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+2m50s-+2m55s)', new Date(1423726167 * 1000), new Date(1423726172 * 1000)],
+['wake_lock_in', 'LOCATION(+2m55s-+2m55s)', new Date(1423726172 * 1000), new Date(1423726173 * 1000)],
+['wake_lock_in', 'LOCATION(+2m55s-+2m56s)', new Date(1423726172 * 1000), new Date(1423726174 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a26:"Icing"(+2m55s-+2m57s)', new Date(1423726172 * 1000), new Date(1423726174 * 1000)],
+['wake_lock_in', 'LOCATION(+2m56s-+2m56s)', new Date(1423726173 * 1000), new Date(1423726174 * 1000)],
+['wake_lock_in', 'LOCATION(+11m47s-+11m47s)', new Date(1423726704 * 1000), new Date(1423726705 * 1000)],
+['wake_lock_in', 'LOCATION(+11m47s-+11m48s)', new Date(1423726704 * 1000), new Date(1423726705 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+11m47s-+11m47s)', new Date(1423726704 * 1000), new Date(1423726705 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+11m47s-+11m52s)', new Date(1423726704 * 1000), new Date(1423726709 * 1000)],
+['wake_lock_in', 'LOCATION(+11m48s-+11m57s)', new Date(1423726705 * 1000), new Date(1423726714 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+20m22s-+20m22s)', new Date(1423727219 * 1000), new Date(1423727220 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+20m24s-+20m29s)', new Date(1423727221 * 1000), new Date(1423727226 * 1000)],
+['wake_lock_in', 'LOCATION(+3m23s-+3m23s)', new Date(1423726200 * 1000), new Date(1423726201 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+3m23s-+3m23s)', new Date(1423726200 * 1000), new Date(1423726201 * 1000)],
+['wake_lock_in', 'LOCATION(+20m29s-+20m29s)', new Date(1423727226 * 1000), new Date(1423727227 * 1000)],
+['wake_lock_in', 'LOCATION(+12m00s-+12m01s)', new Date(1423726717 * 1000), new Date(1423726719 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a26:"*alarm*":"com.google.android.gms:car"(+12m07s-+12m07s)', new Date(1423726724 * 1000), new Date(1423726725 * 1000)],
+['wake_lock_in', 'LOCATION(+12m07s-+12m07s)', new Date(1423726724 * 1000), new Date(1423726725 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"*walarm*:com.android.internal.telephony.data-stall"(+12m07s-+12m07s)', new Date(1423726724 * 1000), new Date(1423726725 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a8:"*walarm*:com.asus.email/com.android.exchange.MailboxAlarmReceiver"(+20m41s-+20m41s)', new Date(1423727238 * 1000), new Date(1423727239 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"bluedroid_timer"(+20m19s-+20m20s)', new Date(1423727216 * 1000), new Date(1423727217 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"*walarm*:com.android.bluetooth.btservice.action.ALARM_WAKEUP"(+20m19s-+20m19s)', new Date(1423727216 * 1000), new Date(1423727217 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a113:"*alarm*":"com.asus.sitd.whatsnext"(+20m19s-+20m19s)', new Date(1423727216 * 1000), new Date(1423727217 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+20m19s-+20m24s)', new Date(1423727216 * 1000), new Date(1423727221 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a26:"*alarm*":"com.google.android.gms:car"(+20m19s-+20m19s)', new Date(1423727216 * 1000), new Date(1423727217 * 1000)],
+['wake_lock_in', 'LOCATION(+20m19s-+20m19s)', new Date(1423727216 * 1000), new Date(1423727217 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"*walarm*:com.android.bluetooth.btservice.action.ALARM_WAKEUP"(+4m11s-+4m11s)', new Date(1423726248 * 1000), new Date(1423726249 * 1000)],
+['wake_lock_in', 'LOCATION(+4m11s-+4m11s)', new Date(1423726248 * 1000), new Date(1423726249 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a129:"*alarm*":"com.facebook.katana"(+4m11s-+4m11s)', new Date(1423726248 * 1000), new Date(1423726249 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a26:"*alarm*":"com.google.android.gms:car"(+4m11s-+4m11s)', new Date(1423726248 * 1000), new Date(1423726249 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"bluedroid_timer"(+4m11s-+4m12s)', new Date(1423726248 * 1000), new Date(1423726249 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+4m11s-+4m16s)', new Date(1423726248 * 1000), new Date(1423726253 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+4m16s-+4m21s)', new Date(1423726253 * 1000), new Date(1423726258 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.RegisteringClientApplication"(+21m24s-+21m24s)', new Date(1423727281 * 1000), new Date(1423727282 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"bluedroid_timer"(+21m24s-+21m25s)', new Date(1423727281 * 1000), new Date(1423727282 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.DiscoveringServices"(+21m24s-+21m24s)', new Date(1423727281 * 1000), new Date(1423727282 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+21m24s-+21m24s)', new Date(1423727281 * 1000), new Date(1423727282 * 1000)],
+['wake_lock_in', 'LOCATION(+21m24s-+21m24s)', new Date(1423727281 * 1000), new Date(1423727282 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.ConnectingClientProfile"(+21m24s-+21m24s)', new Date(1423727281 * 1000), new Date(1423727282 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.RegisteringServerApplication"(+21m24s-+21m24s)', new Date(1423727281 * 1000), new Date(1423727282 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.ConnectingDevice"(+21m24s-+21m24s)', new Date(1423727281 * 1000), new Date(1423727282 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"com.fitbit.galileo.GalileoSyncService.WAKE_LOCK"(+21m24s-+21m39s)', new Date(1423727281 * 1000), new Date(1423727296 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+21m24s-+21m29s)', new Date(1423727281 * 1000), new Date(1423727286 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.ConnectingServerProfile"(+21m24s-+21m24s)', new Date(1423727281 * 1000), new Date(1423727282 * 1000)],
+['wake_lock_in', 'LOCATION(+4m21s-+4m21s)', new Date(1423726258 * 1000), new Date(1423726259 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+21m29s-+21m34s)', new Date(1423727286 * 1000), new Date(1423727291 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"bluedroid_timer"(+21m29s-+21m30s)', new Date(1423727286 * 1000), new Date(1423727287 * 1000)],
+['wake_lock_in', 'LOCATION(+21m30s-+21m34s)', new Date(1423727287 * 1000), new Date(1423727291 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a113:"*alarm*:com.asus.sitd.whatsnext/.card.CardUpdater":"com.asus.sitd.whatsnext"(+21m30s-+21m30s)', new Date(1423727287 * 1000), new Date(1423727288 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a26:"*alarm*":"com.google.android.gms:car"(+21m30s-+21m30s)', new Date(1423727287 * 1000), new Date(1423727288 * 1000)],
+['wake_lock_in', 'GCM(+21m34s-+21m37s)', new Date(1423727291 * 1000), new Date(1423727294 * 1000)],
+['wake_lock_in', 'LOCATION(+21m34s-+21m34s)', new Date(1423727291 * 1000), new Date(1423727292 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"*walarm*:com.fitbit.FitbitMobile/com.fitbit.galileo.service.GalileoSyncService_"(+21m34s-+21m34s)', new Date(1423727291 * 1000), new Date(1423727292 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a113:"*alarm*":"com.asus.sitd.whatsnext"(+21m34s-+21m34s)', new Date(1423727291 * 1000), new Date(1423727292 * 1000)],
+['wake_lock_in', 'GCM(+21m34s-+21m34s)', new Date(1423727291 * 1000), new Date(1423727292 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.DisconnectingDevice"(+21m35s-+21m35s)', new Date(1423727292 * 1000), new Date(1423727293 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.DisconnectingServerProfile"(+21m35s-+21m35s)', new Date(1423727292 * 1000), new Date(1423727293 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.UnregisteringServerApplication"(+21m35s-+21m35s)', new Date(1423727292 * 1000), new Date(1423727293 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"bluedroid_timer"(+21m35s-+21m36s)', new Date(1423727292 * 1000), new Date(1423727293 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.UnregisteringClientApplication"(+21m35s-+21m35s)', new Date(1423727292 * 1000), new Date(1423727293 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.DisconnectingClientProfile"(+21m35s-+21m35s)', new Date(1423727292 * 1000), new Date(1423727293 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+11m52s-+11m57s)', new Date(1423726709 * 1000), new Date(1423726714 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a120:"*walarm*:com.xiaomi.push.PING_TIMER"(+21m47s-+21m47s)', new Date(1423727304 * 1000), new Date(1423727305 * 1000)],
+['wake_lock_in', 'LOCATION(+11m57s-+11m57s)', new Date(1423726714 * 1000), new Date(1423726715 * 1000)],
+['wake_lock_in', 'LOCATION(+11m57s-+12m00s)', new Date(1423726714 * 1000), new Date(1423726717 * 1000)],
+['wake_lock_in', 'LOCATION(+5m14s-+5m14s)', new Date(1423726311 * 1000), new Date(1423726312 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+5m14s-+5m19s)', new Date(1423726311 * 1000), new Date(1423726316 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+5m14s-+5m15s)', new Date(1423726311 * 1000), new Date(1423726313 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"com.fitbit.galileo.GalileoSyncService.WAKE_LOCK"(+5m14s-+5m26s)', new Date(1423726311 * 1000), new Date(1423726323 * 1000)],
+['wake_lock_in', 'LOCATION(+5m14s-+5m24s)', new Date(1423726311 * 1000), new Date(1423726321 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.ConnectingClientProfile"(+5m15s-+5m15s)', new Date(1423726312 * 1000), new Date(1423726313 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.RegisteringClientApplication"(+5m15s-+5m15s)', new Date(1423726312 * 1000), new Date(1423726313 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.ConnectingDevice"(+5m15s-+5m17s)', new Date(1423726312 * 1000), new Date(1423726314 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.ConnectingServerProfile"(+5m15s-+5m15s)', new Date(1423726312 * 1000), new Date(1423726313 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"bluedroid_timer"(+5m15s-+5m18s)', new Date(1423726312 * 1000), new Date(1423726315 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.RegisteringServerApplication"(+5m15s-+5m15s)', new Date(1423726312 * 1000), new Date(1423726313 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.DiscoveringServices"(+5m17s-+5m17s)', new Date(1423726314 * 1000), new Date(1423726315 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+5m19s-+5m24s)', new Date(1423726316 * 1000), new Date(1423726321 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"bluedroid_timer"(+5m22s-+5m23s)', new Date(1423726319 * 1000), new Date(1423726320 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+5m22s-+5m22s)', new Date(1423726319 * 1000), new Date(1423726320 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.DisconnectingDevice"(+5m23s-+5m23s)', new Date(1423726320 * 1000), new Date(1423726321 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.UnregisteringServerApplication"(+5m23s-+5m23s)', new Date(1423726320 * 1000), new Date(1423726321 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.DisconnectingServerProfile"(+5m23s-+5m23s)', new Date(1423726320 * 1000), new Date(1423726321 * 1000)],
+['wake_lock_in', '+wake_lock_in=1002:"bluedroid_timer"(+5m23s-+5m26s)', new Date(1423726320 * 1000), new Date(1423726323 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.UnregisteringClientApplication"(+5m23s-+5m23s)', new Date(1423726320 * 1000), new Date(1423726321 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a122:"ConnectionState.DisconnectingClientProfile"(+5m23s-+5m23s)', new Date(1423726320 * 1000), new Date(1423726321 * 1000)],
+['wake_lock_in', 'LOCATION(+5m24s-+5m24s)', new Date(1423726321 * 1000), new Date(1423726322 * 1000)],
+['wake_lock_in', 'LOCATION(+5m25s-+5m26s)', new Date(1423726322 * 1000), new Date(1423726323 * 1000)],
+['wake_lock_in', 'LOCATION(+5m25s-+5m25s)', new Date(1423726322 * 1000), new Date(1423726323 * 1000)],
+['wake_lock_in', 'LOCATION(+5m26s-+5m26s)', new Date(1423726323 * 1000), new Date(1423726324 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"*walarm*:com.android.internal.telephony.data-stall"(+6m06s-+6m06s)', new Date(1423726363 * 1000), new Date(1423726364 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+6m51s-+6m56s)', new Date(1423726408 * 1000), new Date(1423726413 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+15m17s-+15m18s)', new Date(1423726914 * 1000), new Date(1423726916 * 1000)],
+['wake_lock_in', 'LOCATION(+15m17s-+15m18s)', new Date(1423726914 * 1000), new Date(1423726916 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a8:"MAIL_SERVICE"(+15m17s-+15m23s)', new Date(1423726914 * 1000), new Date(1423726920 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+15m18s-+15m23s)', new Date(1423726915 * 1000), new Date(1423726920 * 1000)],
+['wake_lock_in', 'LOCATION(+15m18s-+15m19s)', new Date(1423726915 * 1000), new Date(1423726916 * 1000)],
+['wake_lock_in', 'LOCATION(+15m19s-+15m28s)', new Date(1423726916 * 1000), new Date(1423726925 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+15m23s-+15m28s)', new Date(1423726920 * 1000), new Date(1423726925 * 1000)],
+['wake_lock_in', 'LOCATION(+27m54s-+27m55s)', new Date(1423727671 * 1000), new Date(1423727672 * 1000)],
+['wake_lock_in', 'LOCATION(+6m56s-+6m56s)', new Date(1423726413 * 1000), new Date(1423726414 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+24m08s-+24m13s)', new Date(1423727445 * 1000), new Date(1423727450 * 1000)],
+['wake_lock_in', 'LOCATION(+24m08s-+24m10s)', new Date(1423727445 * 1000), new Date(1423727447 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+24m08s-+24m08s)', new Date(1423727445 * 1000), new Date(1423727446 * 1000)],
+['wake_lock_in', 'LOCATION(+24m08s-+24m08s)', new Date(1423727445 * 1000), new Date(1423727446 * 1000)],
+['wake_lock_in', 'LOCATION(+24m10s-+24m18s)', new Date(1423727447 * 1000), new Date(1423727455 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+24m13s-+24m18s)', new Date(1423727450 * 1000), new Date(1423727455 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a26:"*alarm*":"com.google.android.gms:car"(+7m11s-+7m11s)', new Date(1423726428 * 1000), new Date(1423726429 * 1000)],
+['wake_lock_in', 'LOCATION(+7m11s-+7m11s)', new Date(1423726428 * 1000), new Date(1423726429 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a119:"*alarm*":"jp.naver.line.android"(+7m11s-+7m11s)', new Date(1423726428 * 1000), new Date(1423726429 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*walarm*:android.net.ConnectivityService.action.PKT_CNT_SAMPLE_INTERVAL_ELAPSED"(+7m11s-+7m11s)', new Date(1423726428 * 1000), new Date(1423726429 * 1000)],
+['wake_lock_in', 'LOCATION(+24m18s-+24m19s)', new Date(1423727455 * 1000), new Date(1423727457 * 1000)],
+['wake_lock_in', 'LOCATION(+24m18s-+24m18s)', new Date(1423727455 * 1000), new Date(1423727456 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a113:"*alarm*:com.asus.sitd.whatsnext/.card.CardUpdater":"com.asus.sitd.whatsnext"(+24m18s-+24m18s)', new Date(1423727455 * 1000), new Date(1423727456 * 1000)],
+['wake_lock_in', 'LOCATION(+24m19s-+24m22s)', new Date(1423727456 * 1000), new Date(1423727459 * 1000)],
+['wake_lock_in', 'LOCATION(+24m22s-+24m22s)', new Date(1423727459 * 1000), new Date(1423727460 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+16m03s-+16m03s)', new Date(1423726960 * 1000), new Date(1423726961 * 1000)],
+['wake_lock_in', 'LOCATION(+6m46s-+6m46s)', new Date(1423726403 * 1000), new Date(1423726404 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+6m46s-+6m51s)', new Date(1423726403 * 1000), new Date(1423726408 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+6m46s-+6m46s)', new Date(1423726403 * 1000), new Date(1423726404 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+16m47s-+16m47s)', new Date(1423727004 * 1000), new Date(1423727005 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+16m47s-+16m52s)', new Date(1423727004 * 1000), new Date(1423727009 * 1000)],
+['wake_lock_in', 'LOCATION(+16m47s-+16m47s)', new Date(1423727004 * 1000), new Date(1423727005 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+16m52s-+16m57s)', new Date(1423727009 * 1000), new Date(1423727014 * 1000)],
+['wake_lock_in', 'LOCATION(+16m57s-+16m57s)', new Date(1423727014 * 1000), new Date(1423727015 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a113:"*alarm*:com.asus.sitd.whatsnext/.card.CardUpdater":"com.asus.sitd.whatsnext"(+16m57s-+16m57s)', new Date(1423727014 * 1000), new Date(1423727015 * 1000)],
+['wake_lock_in', '+wake_lock_in=-1:"screen"(0s-+4s)', new Date(1423725997 * 1000), new Date(1423726001 * 1000)],
+['wake_lock_in', '+wake_lock_in=1013:"AudioMix"(0s-0s)', new Date(1423725997 * 1000), new Date(1423725998 * 1000)],
+['wake_lock_in', 'LOCATION(+2s-+2s)', new Date(1423725999 * 1000), new Date(1423726000 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a16:"show_keyguard"(+4s-+4s)', new Date(1423726001 * 1000), new Date(1423726002 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"WifiSuspend"(+4s-+4s)', new Date(1423726001 * 1000), new Date(1423726002 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"ActivityManager-Sleep"(+4s-+4s)', new Date(1423726001 * 1000), new Date(1423726002 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+4s-+4s)', new Date(1423726001 * 1000), new Date(1423726002 * 1000)],
+['wake_lock_in', 'LOCATION(+5s-+5s)', new Date(1423726002 * 1000), new Date(1423726003 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"SyncLoopWakeLock"(+5s-+5s)', new Date(1423726002 * 1000), new Date(1423726003 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a98:"*sync*/com.google.android.apps.plus.content.EsProvider/com.google/tristan.lee.asus@gmail.com"(+5s-+14s)', new Date(1423726002 * 1000), new Date(1423726011 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a129:"FbClientConnManager"(+6s-+8s)', new Date(1423726003 * 1000), new Date(1423726005 * 1000)],
+['wake_lock_in', 'LOCATION(+6s-+7s)', new Date(1423726003 * 1000), new Date(1423726005 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"SyncLoopWakeLock"(+7s-+7s)', new Date(1423726004 * 1000), new Date(1423726005 * 1000)],
+['wake_lock_in', 'LOCATION(+7s-+7s)', new Date(1423726004 * 1000), new Date(1423726005 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a8:"*walarm*:com.asus.email/com.android.exchange.MailboxAlarmReceiver"(+8s-+13s)', new Date(1423726005 * 1000), new Date(1423726010 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a119:"jp.naver.line.android"(+11s-+11s)', new Date(1423726008 * 1000), new Date(1423726009 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a119:"*alarm*":"jp.naver.line.android"(+13s-+13s)', new Date(1423726010 * 1000), new Date(1423726011 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a8:"MAIL_SERVICE"(+13s-+16s)', new Date(1423726010 * 1000), new Date(1423726013 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a82:"wake:com.google.android.music/.leanback.AutoCacheSchedulingService"(+13s-+13s)', new Date(1423726010 * 1000), new Date(1423726011 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"SyncLoopWakeLock"(+14s-+14s)', new Date(1423726011 * 1000), new Date(1423726012 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+32s-+33s)', new Date(1423726029 * 1000), new Date(1423726031 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a8:"MAIL_SERVICE"(+33s-+35s)', new Date(1423726030 * 1000), new Date(1423726032 * 1000)],
+['wake_lock_in', 'LOCATION(+15m28s-+15m28s)', new Date(1423726925 * 1000), new Date(1423726926 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+18m08s-+18m13s)', new Date(1423727085 * 1000), new Date(1423727090 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+18m08s-+18m08s)', new Date(1423727085 * 1000), new Date(1423727086 * 1000)],
+['wake_lock_in', 'LOCATION(+18m08s-+18m08s)', new Date(1423727085 * 1000), new Date(1423727086 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+18m13s-+18m18s)', new Date(1423727090 * 1000), new Date(1423727095 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+26m46s-+26m51s)', new Date(1423727603 * 1000), new Date(1423727608 * 1000)],
+['wake_lock_in', 'LOCATION(+26m46s-+26m46s)', new Date(1423727603 * 1000), new Date(1423727604 * 1000)],
+['wake_lock_in', '+wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher"(+26m46s-+26m46s)', new Date(1423727603 * 1000), new Date(1423727604 * 1000)],
+['wake_lock_in', 'LOCATION(+18m18s-+18m18s)', new Date(1423727095 * 1000), new Date(1423727096 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a113:"*alarm*:com.asus.sitd.whatsnext/.card.CardUpdater":"com.asus.sitd.whatsnext"(+18m18s-+18m18s)', new Date(1423727095 * 1000), new Date(1423727096 * 1000)],
+['wake_lock_in', '+wake_lock_in=1001:"RILJ"(+26m51s-+26m56s)', new Date(1423727608 * 1000), new Date(1423727613 * 1000)],
+['wake_lock_in', '+wake_lock_in=u0a113:"*alarm*:com.asus.sitd.whatsnext/.card.CardUpdater":"com.asus.sitd.whatsnext"(+26m56s-+26m56s)', new Date(1423727613 * 1000), new Date(1423727614 * 1000)],
+['wake_lock_in', 'LOCATION(+26m56s-+26m57s)', new Date(1423727613 * 1000), new Date(1423727615 * 1000)],
+['wake_lock_in', 'LOCATION(+26m56s-+26m56s)', new Date(1423727613 * 1000), new Date(1423727614 * 1000)],
+['mobile_radio', '+mobile_radio(0s-+28m17s)', new Date(1423725997 * 1000), new Date(1423727694 * 1000)],
+['data_conn', 'data_conn=umts(+28m17s-+28m17s)', new Date(1423727694 * 1000), new Date(1423727695 * 1000)],
+['data_conn', 'data_conn=umts(+28m07s-+28m07s)', new Date(1423727684 * 1000), new Date(1423727685 * 1000)],
+['data_conn', 'data_conn=umts(0s-0s)', new Date(1423725997 * 1000), new Date(1423725998 * 1000)],
+['data_conn', 'data_conn=hspap(+27m53s-+27m53s)', new Date(1423727670 * 1000), new Date(1423727671 * 1000)],
+['data_conn', 'data_conn=hspap(+28m09s-+28m09s)', new Date(1423727686 * 1000), new Date(1423727687 * 1000)],
+['status', 'status=charging(+27m58s-+27m58s)', new Date(1423727675 * 1000), new Date(1423727676 * 1000)],
+['status', 'status=charging(0s-0s)', new Date(1423725997 * 1000), new Date(1423725998 * 1000)],
+['status', 'status=discharging(+2s-+2s)', new Date(1423725999 * 1000), new Date(1423726000 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+20m19s-+20m29s)', new Date(1423727216 * 1000), new Date(1423727226 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+28m05s-+28m15s)', new Date(1423727682 * 1000), new Date(1423727692 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+6m46s-+6m56s)', new Date(1423726403 * 1000), new Date(1423726413 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+5m14s-+5m24s)', new Date(1423726311 * 1000), new Date(1423726321 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+4m11s-+4m21s)', new Date(1423726248 * 1000), new Date(1423726258 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+27m50s-+27m55s)', new Date(1423727667 * 1000), new Date(1423727672 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+5m25s-+5m25s)', new Date(1423726322 * 1000), new Date(1423726323 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+18m08s-+18m18s)', new Date(1423727085 * 1000), new Date(1423727095 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+11m47s-+11m57s)', new Date(1423726704 * 1000), new Date(1423726714 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+21m24s-+21m34s)', new Date(1423727281 * 1000), new Date(1423727291 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+2m45s-+2m55s)', new Date(1423726162 * 1000), new Date(1423726172 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+15m18s-+15m28s)', new Date(1423726915 * 1000), new Date(1423726925 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+24m08s-+24m18s)', new Date(1423727445 * 1000), new Date(1423727455 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+27m56s-+28m05s)', new Date(1423727673 * 1000), new Date(1423727682 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+16m47s-+16m57s)', new Date(1423727004 * 1000), new Date(1423727014 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+19m12s-+19m22s)', new Date(1423727149 * 1000), new Date(1423727159 * 1000)],
+['wifi_full_lock', '+wifi_full_lock(+26m46s-+26m56s)', new Date(1423727603 * 1000), new Date(1423727613 * 1000)],
+['phone_signal_strength', 'phone_signal_strength=great(+27m51s-+27m51s)', new Date(1423727668 * 1000), new Date(1423727669 * 1000)],
+['phone_signal_strength', 'phone_signal_strength=none(+27m51s-+27m51s)', new Date(1423727668 * 1000), new Date(1423727669 * 1000)],
+['phone_signal_strength', 'phone_signal_strength=great(0s-0s)', new Date(1423725997 * 1000), new Date(1423725998 * 1000)],
+['audio', '+audio(0s-+28m17s)', new Date(1423725997 * 1000), new Date(1423727694 * 1000)],
+['fg', '+fg=1000:"com.asus.loguploader"(+27m58s-+27m58s)', new Date(1423727675 * 1000), new Date(1423727676 * 1000)],
+['health', 'health=good(0s-0s)', new Date(1423725997 * 1000), new Date(1423725998 * 1000)],
+['plug', 'plug=usb(+27m58s-+27m58s)', new Date(1423727675 * 1000), new Date(1423727676 * 1000)],
+['plug', 'plug=usb(0s-0s)', new Date(1423725997 * 1000), new Date(1423725998 * 1000)],
+['plug', 'plug=none(+2s-+2s)', new Date(1423725999 * 1000), new Date(1423726000 * 1000)],
+]);
+	options = {
+	timeline: { colorByRowLabel: true},
+	'width': 3000,
+	'height': 3000, 
+	colors: ['#4070cf', '#2e8b57', '#cbb69d', '#dc3912', 
+	'#9900aa', '#cbb69d', '#990099', '#ff33cc', 
+	'#aa0000', '#4070cf', '#9ac658', '#888888', 
+	
+	
+	
+	
+	
+	'#dc3912', '#990099', '#dda0dd', '#888888', 
+	'#888888', '#4070cf', '#4070cf', ]
+	};
+
+
+  //make sure allocate enough vertical space
+  options['height'] = dataTable.getNumberOfRows() * 40;
+  chart.draw(dataTable, options);
+
+  //get vertical coordinate of scale bar
+  var svg = document.getElementsByTagName('svg')[0];
+  var label = svg.children[2].children[0];
+  var y = label.getAttribute('y');
+  //plus height of scale bar
+  var chart_div_height = parseInt(y) + 50;
+  var chart_height = chart_div_height;
+
+  //set chart height to exact height
+  options['height'] = chart_height;
+  $('#chart').css('height', chart_div_height);
+  svg.setAttribute('height', chart_height);
+  var content = $('#chart').children()[0];
+  $(content).css('height', chart_height);
+}
+
+
+function redrawChart() {
+    var scale = document.getElementById("scale").value;
+    scale = scale.replace('%', '') / 100
+    options['width'] = scale * default_width;
+    chart.draw(dataTable, options);
+}
+
+</script>
+<style>
+#redrawButton{
+width:100px;
+}
+</style>
+</head>
+<body>
+
+<div id="chart"><b>WARNING: Visualizer disabled. If you see this message, download the HTML then open it.</b></div>
+<p><b>WARNING:</b>
+<br>*: wake_lock field only shows the first/last wakelock held 
+when the system is awake. For more detail, use wake_lock_in.<br>To enable full wakelock reporting (post-KitKat only) : 
+<br>adb shell dumpsys batterystats --enable full-wake-history</p>
+<pre>(Local time 15:26:37 - 15:54:54, 28m elapsed)</pre>
+<p>
+Zoom: <input id="scale" type="text" value="100%"></input><button type="button" id="redrawButton"onclick="redrawChart()">redraw</button></p>
+</p>
+
+<b>Event summary:
+</b><br><pre>
+ 36 events, 151.601s total  4.211s avg  5.024s median: +wake_lock_in=1001:"RILJ" (first at 15:26:41)
+157 events, 107.034s total  0.682s avg  0.013s median: LOCATION (first at 15:26:39)
+  2 events, 31.192s total 15.596s avg 26.966s median: +wake_lock_in=-1:"screen" (first at 15:26:37)
+  2 events, 27.043s total 13.521s avg 15.080s median: +wake_lock_in=u0a122:"com.fitbit.galileo.GalileoSyncService.WAKE_LOCK" (first at 15:31:51)
+  4 events, 13.753s total  3.438s avg  3.348s median: +wake_lock_in=u0a8:"MAIL_SERVICE" (first at 15:26:50)
+  8 events, 12.100s total  1.512s avg  1.011s median: +wake_lock_in=1002:"bluedroid_timer" (first at 15:30:48)
+  1 events,  8.705s total  8.705s avg  8.705s median: +wake_lock_in=u0a98:"*sync*/com.google.android.apps.plus.content.EsProvider/com.google/tristan.lee.asus@gmail.com" (first at 15:26:42)
+  3 events,  6.247s total  2.082s avg  1.656s median: +wake_lock_in=u0a8:"*walarm*:com.asus.email/com.android.exchange.MailboxAlarmReceiver" (first at 15:26:45)
+ 17 events,  5.227s total  0.307s avg  0.212s median: +wake_lock_in=1000:"*alarm*:android.intent.action.TIME_TICK":"com.asus.UpdateLauncher" (first at 15:27:09)
+  2 events,  3.141s total  1.571s avg  2.615s median: +wake_lock_in=u0a122:"ConnectionState.ConnectingDevice" (first at 15:31:52)
+  3 events,  2.889s total  0.963s avg  0.087s median: GCM (first at 15:48:11)
+  1 events,  2.268s total  2.268s avg  2.268s median: +wake_lock_in=u0a26:"Icing" (first at 15:29:32)
+  1 events,  1.641s total  1.641s avg  1.641s median: +wake_lock_in=u0a129:"FbClientConnManager" (first at 15:26:43)
+  1 events,  0.963s total  0.963s avg  0.963s median: +wake_lock_in=u0a26:"fingerprint_scanner_local" (first at 15:54:35)
+  5 events,  0.687s total  0.137s avg  0.019s median: +wake_lock_in=1000:"SyncLoopWakeLock" (first at 15:26:42)
+  1 events,  0.662s total  0.662s avg  0.662s median: +wake_lock_in=u0a120:"*alarm*":"com.jiongji.andriod.card" (first at 15:29:21)
+  2 events,  0.611s total  0.306s avg  0.610s median: +wake_lock_in=u0a119:"*alarm*":"jp.naver.line.android" (first at 15:26:50)
+  1 events,  0.535s total  0.535s avg  0.535s median: +wake_lock_in=u0a16:"show_keyguard" (first at 15:26:41)
+  1 events,  0.404s total  0.404s avg  0.404s median: +wake_lock_in=1013:"AudioMix" (first at 15:26:37)
+  3 events,  0.369s total  0.123s avg  0.122s median: +wake_lock_in=u0a129:"*alarm*":"com.facebook.katana" (first at 15:29:22)
+  1 events,  0.345s total  0.345s avg  0.345s median: +wake_lock_in=1000:"ActivityManager-Sleep" (first at 15:26:41)
+  6 events,  0.244s total  0.041s avg  0.005s median: +wake_lock_in=u0a113:"*alarm*:com.asus.sitd.whatsnext/.card.CardUpdater":"com.asus.sitd.whatsnext" (first at 15:43:34)
+  1 events,  0.218s total  0.218s avg  0.218s median: +wake_lock_in=1000:"*alarm*:android.content.syncmanager.SYNC_ALARM":"com.asus.UpdateLauncher" (first at 15:29:21)
+  1 events,  0.186s total  0.186s avg  0.186s median: +wake_lock_in=u0a82:"wake:com.google.android.music/.leanback.AutoCacheSchedulingService" (first at 15:26:50)
+  1 events,  0.164s total  0.164s avg  0.164s median: +wake_lock_in=1000:"NetworkStats" (first at 15:29:21)
+  2 events,  0.125s total  0.062s avg  0.086s median: +wake_lock_in=1000:"okTag" (first at 15:54:35)
+  2 events,  0.122s total  0.061s avg  0.110s median: +wake_lock_in=1001:"*walarm*:com.android.internal.telephony.data-stall" (first at 15:32:43)
+  6 events,  0.121s total  0.020s avg  0.015s median: +wake_lock_in=u0a26:"*alarm*":"com.google.android.gms:car" (first at 15:29:22)
+  2 events,  0.086s total  0.043s avg  0.078s median: +wake_lock_in=u0a122:"ConnectionState.DiscoveringServices" (first at 15:31:54)
+  1 events,  0.074s total  0.074s avg  0.074s median: +wake_lock_in=u0a119:"*walarm*:jp.naver.line.android.legy.SpdyHeartbeatChecker.sendPing" (first at 15:54:33)
+  2 events,  0.071s total  0.035s avg  0.054s median: +wake_lock_in=1002:"*walarm*:com.android.bluetooth.btservice.action.ALARM_WAKEUP" (first at 15:30:48)
+  1 events,  0.046s total  0.046s avg  0.046s median: +wake_lock_in=u0a119:"jp.naver.line.android" (first at 15:26:48)
+  1 events,  0.035s total  0.035s avg  0.035s median: +wake_lock_in=u0a120:"*walarm*:com.xiaomi.push.PING_TIMER" (first at 15:48:24)
+  1 events,  0.033s total  0.033s avg  0.033s median: +wake_lock_in=u0a26:"fingerprint_scanner_static" (first at 15:54:35)
+  1 events,  0.012s total  0.012s avg  0.012s median: +wake_lock_in=1000:"*walarm*:android.net.ConnectivityService.action.PKT_CNT_SAMPLE_INTERVAL_ELAPSED" (first at 15:33:48)
+  1 events,  0.008s total  0.008s avg  0.008s median: +wake_lock_in=u0a122:"*walarm*:com.fitbit.FitbitMobile/com.fitbit.galileo.service.GalileoSyncService_" (first at 15:48:11)
+  2 events,  0.006s total  0.003s avg  0.005s median: +wake_lock_in=u0a122:"ConnectionState.UnregisteringServerApplication" (first at 15:32:00)
+  1 events,  0.005s total  0.005s avg  0.005s median: +wake_lock_in=1000:"SyncManagerHandleSyncAlarm" (first at 15:29:21)
+  1 events,  0.004s total  0.004s avg  0.004s median: +wake_lock_in=1000:"*alarm*":"com.asus.UpdateLauncher" (first at 15:29:22)
+  2 events,  0.004s total  0.002s avg  0.002s median: +wake_lock_in=u0a122:"ConnectionState.ConnectingServerProfile" (first at 15:31:52)
+  2 events,  0.004s total  0.002s avg  0.002s median: +wake_lock_in=u0a122:"ConnectionState.DisconnectingClientProfile" (first at 15:32:00)
+  2 events,  0.004s total  0.002s avg  0.002s median: +wake_lock_in=u0a122:"ConnectionState.RegisteringClientApplication" (first at 15:31:52)
+  2 events,  0.004s total  0.002s avg  0.003s median: +wake_lock_in=u0a122:"ConnectionState.DisconnectingDevice" (first at 15:32:00)
+  2 events,  0.003s total  0.002s avg  0.002s median: +wake_lock_in=u0a122:"ConnectionState.UnregisteringClientApplication" (first at 15:32:00)
+  2 events,  0.003s total  0.002s avg  0.002s median: +wake_lock_in=u0a122:"ConnectionState.RegisteringServerApplication" (first at 15:31:52)
+  2 events,  0.003s total  0.002s avg  0.002s median: +wake_lock_in=u0a122:"ConnectionState.ConnectingClientProfile" (first at 15:31:52)
+  2 events,  0.002s total  0.001s avg  0.001s median: +wake_lock_in=u0a122:"ConnectionState.DisconnectingServerProfile" (first at 15:32:00)
+  1 events,  0.002s total  0.002s avg  0.002s median: +wake_lock_in=u0a8:"AttachmentService" (first at 15:54:28)
+  1 events,  0.001s total  0.001s avg  0.001s median: +wake_lock_in=1000:"WifiSuspend" (first at 15:26:41)
+  2 events,  0.000s total  0.000s avg  0.000s median: +wake_lock_in=u0a113:"*alarm*":"com.asus.sitd.whatsnext" (first at 15:46:56)
+  1 events,  0.000s total  0.000s avg  0.000s median: +wake_lock_in=u0a41:"*alarm*:com.google.android.googlequicksearchbox/com.google.android.velvet.VelvetBackgroundTasksImpl$Service":"com.google.android.googlequicksearchbox:search" (first at 15:54:48)
+total: 0.000 mAh, 306 events
+<pre>Process table:
+1000: "com.asus.UpdateLauncher"
+1001: "com.android.phone"
+1002: "com.android.bluetooth"
+u0a10: "com.asus.launcher"
+u0a100: "com.android.printspooler"
+u0a106: "com.asus.taskwidget"
+u0a110: "com.android.smspush"
+u0a111: "com.asus.weathertime:main"
+u0a113: "com.asus.sitd.whatsnext"
+u0a114: "com.asus.ime"
+u0a119: "jp.naver.line.android"
+u0a120: "com.jiongji.andriod.card"
+u0a122: "com.fitbit.FitbitMobile"
+u0a123: "org.redidea.voicetube"
+u0a124: "tunein.player"
+u0a127: "com.microsoft.next"
+u0a129: "com.facebook.katana"
+u0a13: "com.asus.music"
+u0a16: "com.android.systemui"
+u0a17: "com.asus.task"
+u0a20: "com.android.providers.calendar"
+u0a21: "android.process.acore"
+u0a23: "android.process.media"
+u0a26: "com.google.android.gms:car"
+u0a29: "com.google.android.partnersetup"
+u0a34: "com.android.vending"
+u0a41: "com.google.android.googlequicksearchbox:search"
+u0a45: "com.asus.browser"
+u0a6: "com.asus.contacts"
+u0a61: "com.android.chrome"
+u0a65: "com.bluebeam:FdbtService"
+u0a66: "com.asus.deskclock:main"
+u0a8: "com.asus.email"
+u0a82: "com.google.android.music:main"
+u0a98: "com.google.android.apps.plus"
+
+</body>
+</html>
